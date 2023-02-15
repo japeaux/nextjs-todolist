@@ -3,8 +3,8 @@ import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp } from 'fireb
 import React from 'react'
 import { db } from '../../firebase'
 import Link from 'next/link'
-import AppInsideBar from '../modules/views/AppInsideBar'
-import withRoot from '../modules/withRoot'
+import AppInsideBar from '../../components/modules/views/AppInsideBar'
+import withRoot from '../../components/modules/withRoot'
 import { useAuth } from '../../Auth'
 import { useRouter } from 'next/router'
 

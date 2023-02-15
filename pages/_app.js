@@ -5,7 +5,7 @@ import '../styles/globals.css'
 import {AuthContextProvider} from "../Auth"
 import { useRouter } from 'next/router'
 import ProtectedRoute from '../components/ProtectedRoute'
-import AppInsideBar from './modules/views/AppInsideBar';
+import AppInsideBar from '../components/modules/views/AppInsideBar';
 
 // function MyApp({ Component, pageProps }) {
 //   return (

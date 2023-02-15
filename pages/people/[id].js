@@ -2,10 +2,10 @@ import { Avatar, Button,  CardActions,  Typography } from '@mui/material'
 import {  collection, doc, getDoc, getDocs,  } from 'firebase/firestore'
 import React from 'react'
 import { db } from '../../firebase'
-import AppInsideBar from '../modules/views/AppInsideBar'
-import withRoot from '../modules/withRoot'
+import AppInsideBar from '../../components/modules/views/AppInsideBar'
+import withRoot from '../../components/modules/withRoot'
 import { useRouter } from 'next/router'
-import AppForm from '../modules/views/AppForm'
+import AppForm from '../../components/modules/views/AppForm'
 
 
 const People = ({userProps, id}) => {

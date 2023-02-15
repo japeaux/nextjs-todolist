@@ -2,7 +2,7 @@ import {  Container } from '@mui/material'
 import { db } from '../firebase';
 import { useState } from 'react'
 
-import { TodoContext } from './TodoContext'
+import { TodoContext } from '../TodoContext'
 
 
 import { useAuth } from '../Auth';
@@ -11,10 +11,10 @@ import { verifyIdToken } from '../firebaseAdmin';
 import { collection, getDocs,  orderBy, query, where  } from 'firebase/firestore';
 import nookies from 'nookies'
 
-import AppInsideBar from './modules/views/AppInsideBar';
-import withRoot from './modules/withRoot';
-import AppFooter from './modules/views/AppFooter';
-import AppForm from './modules/views/AppForm';
+import AppInsideBar from '../components/modules/views/AppInsideBar';
+import withRoot from '../components/modules/withRoot';
+import AppFooter from '../components/modules/views/AppFooter';
+import AppForm from '../components/modules/views/AppForm';
 import PendingList from '../components/PendingList';
 
 

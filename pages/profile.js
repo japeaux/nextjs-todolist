@@ -1,10 +1,10 @@
 
 import * as React from 'react';
-import Typography from './modules/components/Typography';
-import AppForm from './modules/views/AppForm';
-import withRoot from './modules/withRoot';
+import Typography from '../components/modules/components/Typography';
+import AppForm from '../components/modules/views/AppForm';
+import withRoot from '../components/modules/withRoot';
 import { useAuth } from '../Auth';
-import AppInsideBar from './modules/views/AppInsideBar';
+import AppInsideBar from '../components/modules/views/AppInsideBar';
 import ButtonUploadFile from '../components/storage/ButtonUploadFile';
 import { Grid, IconButton } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home';

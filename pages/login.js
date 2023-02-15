@@ -20,7 +20,7 @@ import { useRouter } from 'next/router'
 import imgBack from '../public/assets/16.png'
 
 import Image from "next/image";
-import AppAppBar from './modules/views/AppAppBar';
+import AppAppBar from '../components/modules/views/AppAppBar';
 
 function Copyright(props) {
   return (

@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import moment from 'moment'
 import React, { useContext } from 'react'
-import { TodoContext } from '../pages/TodoContext';
+import { TodoContext } from '../TodoContext';
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 import {useRouter} from 'next/router'

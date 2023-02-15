@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Markdown from './modules/components/Markdown';
-import Typography from './modules/components/Typography';
-import AppAppBar from './modules/views/AppAppBar';
-import AppFooter from './modules/views/AppFooter';
-import withRoot from './modules/withRoot';
+import Markdown from '../components/modules/components/Markdown';
+import Typography from '../components/modules/components/Typography';
+import AppAppBar from '../components/modules/views/AppAppBar';
+import AppFooter from '../components/modules/views/AppFooter';
+import withRoot from '../components/modules/withRoot';
 // import terms from '../pages/modules/views/positivy.md';
 
 function Positivity() {

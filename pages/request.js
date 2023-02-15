@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Typography from './modules/components/Typography';
-import AppForm from './modules/views/AppForm';
-import { email, required } from './modules/form/validation';
-import withRoot from './modules/withRoot';
-import AppInsideBar from './modules/views/AppInsideBar';
+import Typography from '../components/modules/components/Typography';
+import AppForm from '../components/modules/views/AppForm';
+import { email, required } from '../components/modules/form/validation';
+import withRoot from '../components/modules/withRoot';
+import AppInsideBar from '../components/modules/views/AppInsideBar';
 import { Alert, Snackbar } from '@mui/material';
 import TodoForm from '../components/TodoForm';
-import { TodoContext } from './TodoContext'
+import { TodoContext } from '../TodoContext'
 import { useState } from 'react'
 
 

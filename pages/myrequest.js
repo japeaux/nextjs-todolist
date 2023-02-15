@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
-import { TodoContext } from './TodoContext'
+import { TodoContext } from '../TodoContext'
 
 import UploadFile from '../components/storage/UploadFile';
 
@@ -24,11 +24,11 @@ import ChatIcon from '@mui/icons-material/Chat';
 import {useRouter} from 'next/router'
 
 import * as XLSX from "xlsx";
-import AppInsideBar from './modules/views/AppInsideBar';
-import withRoot from './modules/withRoot';
-import Toolbar from './modules/components/Toolbar';
-import AppFooter from './modules/views/AppFooter';
-import AppForm from './modules/views/AppForm';
+import AppInsideBar from '../components/modules/views/AppInsideBar';
+import withRoot from '../components/modules/withRoot';
+import Toolbar from '../components/modules/components/Toolbar';
+import AppFooter from '../components/modules/views/AppFooter';
+import AppForm from '../components/modules/views/AppForm';
 import RequestList from '../components/RequestList';
 
 

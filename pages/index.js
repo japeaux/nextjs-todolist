@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import withRoot from './modules/withRoot'
+import withRoot from '../components/modules/withRoot'
 import Home2 from './Home'
 
  function Home() {
