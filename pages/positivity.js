@@ -6,7 +6,7 @@ import Typography from './modules/components/Typography';
 import AppAppBar from './modules/views/AppAppBar';
 import AppFooter from './modules/views/AppFooter';
 import withRoot from './modules/withRoot';
-import terms from '../pages/modules/views/positivy.md';
+// import terms from '../pages/modules/views/positivy.md';
 
 function Positivity() {
   return (
@@ -17,7 +17,7 @@ function Positivity() {
           <Typography variant="h3" gutterBottom marked="center" align="center">
           Positivity
           </Typography>
-          <Markdown>{terms}</Markdown>
+          {/* <Markdown>{terms}</Markdown> */}
         </Box>
       </Container>
       <AppFooter />
