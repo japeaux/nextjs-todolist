@@ -49,7 +49,17 @@ export default function SignInSide() {
     try {
       console.log(data.get('email'))
       await login( data.get('email'), data.get('password'))
-      router.push('/dashboard')
+      .then((userCredential) => {
+        // Login 
+        if(userCredential.user.emailVerified){
+          router.push('/dashboard')
+        }else{
+          
+        }
+        
+      })
+
+     
     } catch (err) {
       console.log("err", err)
     }
@@ -57,7 +67,7 @@ export default function SignInSide() {
 
 
   React.useEffect(()=>{
-    console.log("currentUser?.email", currentUser?.email)
+    console.log("currentUser?.email", currentUser?.email,currentUser)
     if(currentUser?.email){
       router.push('/dashboard')
     }

@@ -18,16 +18,27 @@ import { useAuth } from '../Auth';
 import { useRouter } from 'next/router'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 
 
 function Register() {
   const [sent, setSent] = React.useState(false);
-  const {  signup, setUserFrom } = useAuth()
+  const {  signup, setUserFrom, sendEmailForVerification, sendEmailToVerify, getUserInfos } = useAuth()
   const router = useRouter()
   const [data, setData] = React.useState({
     email: '',
     password: '',
   })
+
+
+  const [value, setValue] = React.useState('client');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+
+
   //const [birthday, setBirthday] = React.useState();
 
   const validate = (values) => {
@@ -43,19 +54,13 @@ function Register() {
     return errors;
   };
 
-  // const handleSubmit = (values) => {
-  //   //setSent(true);
-  //   console.log(values)
-
-  // };
-
   const handleSubmit = async (values) => {
     // e.preventDefault()
     // const data = new FormData(e.currentTarget);
     try {
        await signup(values.email, values.password, values.birthday, values.displayName).then((userCredential) => {
         // Signed in 
-        console.log(userCredential)
+        console.log("userCredential", userCredential)
         const usersRef = collection(db,"users");
         const userData = {
           displayName:values.displayName,
@@ -64,14 +69,20 @@ function Register() {
           photoURL:null,
           description:null,
           birthday:values.birthday,
+          emailVerificado:false,
+          typeOfUser:value,
+          contaVerificada:false,
       }
     
-       addDoc(usersRef,userData)
-       setUserFrom(userData)
-
+      addDoc(usersRef,userData)
+      //  setUserFrom(userData)
+      sendEmailForVerification()
+       //sendEmailToVerify(userData)
+      // getUserInfos()
         // ...
       })
-       router.push('/dashboard')
+        alert("We have send you an email for verification")
+       router.push('/login')
     } catch (err) {
       console.log("err", err)
       if(err.code == "auth/email-already-in-use"){
@@ -119,15 +130,6 @@ function Register() {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  {/* <Field
-                    component={RFTextField}
-                    disabled={submitting || sent}
-                    autoComplete="family-name"
-                    fullWidth
-                    label="Last name"
-                    name="lastName"
-                    required
-                  /> */}
 
                     <Field
                     component={RFTextField}
@@ -141,20 +143,8 @@ function Register() {
                   />
                 </Grid>
               </Grid>
-              {/* <TextField
-                id="date"
-                label="Birthday"
-                type="date"
-                defaultValue="2017-05-24"
-                sx={{ width: 220 }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={(event) => {
-                  setBirthday(event.target.value);
-                }}
-              /> */}
 
+        
                
               <Field
                 autoComplete="email"
@@ -177,6 +167,20 @@ function Register() {
                 type="password"
                 margin="normal"
               />
+                    <FormControl>
+                <FormLabel id="demo-controlled-radio-buttons-group">I want to:</FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-controlled-radio-buttons-group"
+                  name="controlled-radio-buttons-group"
+                  value={value}
+                  onChange={handleChange}
+                >
+                  <FormControlLabel value="client" control={<Radio />} label="Be a Member" />
+                  <FormControlLabel value="model" control={<Radio />} label="Be a Model for EPM " />
+                </RadioGroup>
+              </FormControl>
+
+
               <FormSpy subscription={{ submitError: true }}>
                 {({ submitError }) =>
                   submitError ? (
