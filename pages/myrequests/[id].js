@@ -9,7 +9,7 @@ import { useAuth } from '../../Auth'
 import { useRouter } from 'next/router'
 import Answers from '../../components/Answers'
 
-const myResquests = ({todoProps, id}) => {
+const MyResquests = ({todoProps, id}) => {
     //console.log( id)
     const todo =JSON.parse(todoProps)
     const router = useRouter()
@@ -141,7 +141,7 @@ const myResquests = ({todoProps, id}) => {
   )
 }
 
-export default withRoot(myResquests)
+export default withRoot(MyResquests)
 
 export const getStaticPaths = async () => {
     const snapshot = await getDocs(collection(db,'todo'));

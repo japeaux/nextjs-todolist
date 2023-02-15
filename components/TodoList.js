@@ -7,7 +7,7 @@ import RequestItemList from './RequestItemList'
 import Todo from './Todo'
 
 const TodoList = ({todosProps}) => {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(JSON.parse(todosProps))
     const {currentUser} = useAuth()
 
     useEffect(()=>{
