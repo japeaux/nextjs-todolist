@@ -62,5 +62,5 @@ MKBox.propTypes = {
     "none",
   ]),
 };
-
+MKBox.displayName = 'MKBox';
 export default MKBox;

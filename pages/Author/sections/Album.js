@@ -127,9 +127,7 @@ export default function Album({imagesProps}) {
                                 onClose={handleClose}
                                 aria-labelledby="alert-dialog-title"
                                 aria-describedby="alert-dialog-description"
-                                fullWidth={"xl"}
-                                maxWidth={"xl"}
-                                fullScreen
+                                width={1620} height={1720}
                             >
                               <DialogTitle id="alert-dialog-title">
                                 {"Change your profile photo"}
@@ -164,9 +162,7 @@ export default function Album({imagesProps}) {
                               
                               
                         
-                              <Button onClick={handleClose} autoFocus>
-                              >
-                              </Button>
+                           
 
 
                             </DialogActions>

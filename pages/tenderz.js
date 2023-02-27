@@ -37,8 +37,8 @@ import Footer from "./Author/sections/Footer";
 
 // Images
 // import bgImage from "/bg2.jpg";
-import Gallery from "./Author/sections/Gallery";
-import ProductCategories from "../components/modules/views/ProductCategories";
+// import Gallery from "./Author/sections/Gallery";
+// import ProductCategories from "../components/modules/views/ProductCategories";
 import Album from './Author/sections/Album';
 
 

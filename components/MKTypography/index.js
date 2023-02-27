@@ -86,4 +86,6 @@ MKTypography.propTypes = {
   opacity: PropTypes.number,
 };
 
+MKTypography.displayName = 'MKTypography';
+
 export default MKTypography;

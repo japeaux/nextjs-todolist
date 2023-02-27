@@ -36,7 +36,7 @@ import Footer from "./Author/sections/Footer";
 import { useAuth } from "../Auth";
 import { useEffect, useState } from "react";
 import AppInsideBar from "../components/modules/views/AppInsideBar";
-import Gallery from "./Author/sections/Gallery";
+// import Gallery from "./Author/sections/Gallery";
 import ProductCategories from "../components/modules/views/ProductCategories";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";

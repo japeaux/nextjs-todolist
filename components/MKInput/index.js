@@ -39,4 +39,8 @@ MKInput.propTypes = {
   disabled: PropTypes.bool,
 };
 
+
+MKInput.displayName = 'MKInput';
+
+
 export default MKInput;

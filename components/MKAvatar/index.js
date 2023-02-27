@@ -48,5 +48,5 @@ MKAvatar.propTypes = {
   size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl", "xxl","xxxl"]),
   shadow: PropTypes.oneOf(["none", "xs", "sm", "md", "lg", "xl", "xxl","xxxl", "inset"]),
 };
-
+MKAvatar.displayName = 'MKAvatar';
 export default MKAvatar;

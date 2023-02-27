@@ -63,5 +63,6 @@ MKSocialButton.propTypes = {
   circular: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
+MKSocialButton.displayName = 'MKSocialButton';
 
 export default MKSocialButton;

@@ -66,4 +66,7 @@ MKProgress.propTypes = {
   label: PropTypes.bool,
 };
 
+
+
+MKProgress.displayName = 'MKProgress';
 export default MKProgress;

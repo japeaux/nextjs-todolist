@@ -99,4 +99,6 @@ MKPagination.propTypes = {
   placement: PropTypes.oneOf(["left", "right", "center"]),
 };
 
+MKPagination.displayName = 'MKPagination';
+
 export default MKPagination;

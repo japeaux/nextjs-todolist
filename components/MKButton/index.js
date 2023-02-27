@@ -66,4 +66,6 @@ MKButton.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+MKButton.displayName = 'MKButton';
+
 export default MKButton;

@@ -247,7 +247,7 @@ function Profile({user}) {
 
                     {editBio?(<>
 
-                      <p class="css-fix">{}</p>
+                      <p className="css-fix">{}</p>
 
                       <MKTypography variant="body1" fontWeight="light" color="text"  >
                       

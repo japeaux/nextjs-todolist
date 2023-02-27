@@ -46,4 +46,6 @@ MKDatePicker.propTypes = {
   input: PropTypes.objectOf(PropTypes.any),
 };
 
+MKDatePicker.displayName = 'MKDatePicker';
+
 export default MKDatePicker;

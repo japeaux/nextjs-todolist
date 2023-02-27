@@ -68,4 +68,5 @@ MKBadge.propTypes = {
   container: PropTypes.bool,
 };
 
+MKBadge.displayName = 'MKBadge';
 export default MKBadge;
