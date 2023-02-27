@@ -84,11 +84,11 @@ export default function Album({imagesProps}) {
   },[])
 
   
-  const seeMore = async (image,e) =>{
-    e.stopPropagation();
-    console.log(image)
-    router.push(`/album/${image.id}`)
-  }
+  // const seeMore = async (image,e) =>{
+  //   e.stopPropagation();
+  //   console.log(image)
+  //   router.push(`/album/${image.id}`)
+  // }
 
   const handleClickOpen = () => {
     console.log("asdfs", open)
