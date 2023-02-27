@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Grid } from '@mui/material';
 import ButtonUploadAlbum from "../../../components/storage/ButtonUploadAlbum";
 import { useRouter } from 'next/router';
-import Carousel from '../../../components/Carousel';
+// import Carousel from '../../../components/Carousel';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
