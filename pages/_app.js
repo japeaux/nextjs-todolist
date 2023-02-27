@@ -6,6 +6,8 @@ import {AuthContextProvider} from "../Auth"
 import { useRouter } from 'next/router'
 import ProtectedRoute from '../components/ProtectedRoute'
 import AppInsideBar from '../components/modules/views/AppInsideBar';
+import { ThemeProvider } from '@mui/material'
+import theme from "../assets/theme";
 
 // function MyApp({ Component, pageProps }) {
 //   return (
@@ -26,18 +28,21 @@ const noAuthRequired = ['/', '/login', '/register']
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   return ( 
-    <AuthContextProvider>
-      {noAuthRequired.includes(router.pathname)?(
-        <Component {...pageProps} />
-      ) : (
-        <ProtectedRoute>
-               <AppInsideBar />
+    <ThemeProvider theme={theme}>
+      <AuthContextProvider>
+            {noAuthRequired.includes(router.pathname)?(
               <Component {...pageProps} />
-          
-        </ProtectedRoute>
-      )}
+            ) : (
+              <ProtectedRoute>
+                    <AppInsideBar />
+                    <Component {...pageProps} />
+                
+              </ProtectedRoute>
+            )}
 
-    </AuthContextProvider>
+          </AuthContextProvider>
+    </ThemeProvider>
+   
    
   )
 }

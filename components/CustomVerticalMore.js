@@ -28,7 +28,7 @@ export default function BasicMenu() {
   const OpenProfile = async (e) =>{
     e.stopPropagation();
     setAnchorEl(null);
-    router.push(`/profile`)
+    router.push(`/tenderz`)
   }
 
   const OpenMyrequest = async (e) =>{

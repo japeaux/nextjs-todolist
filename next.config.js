@@ -5,15 +5,8 @@ const nextConfig = {
 
 module.exports = nextConfig
 
-// module.exports = {
-//   images: {
-//     remotePatterns: [
-//       {
-//         protocol: 'https',
-//         hostname: 'firebasestorage.googleapis.com',
-//         port: '',
-//         pathname: '' ,
-//       },
-//     ],
-//   },
-// }
+module.exports = {
+  images: {
+    domains: ['www.google.com', 'firebasestorage.googleapis.com'],
+  },
+}

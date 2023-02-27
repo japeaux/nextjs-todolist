@@ -51,7 +51,7 @@ const OpenContract = async (e) =>{
           <Link
             variant="h6"
             underline="none"
-            color="inherit"
+            color="#ffffff"
             href="/dashboard"
             sx={{ fontSize: 24 }}
           >

@@ -57,12 +57,14 @@ export const AuthContextProvider = ({children}) => {
             //     photoURL:user.photoURL
             // }
             
-            console.log(" auihsihuahduihuhuiahuishduia",user)
+            // console.log(" auihsihuahduihuhuiahuishduia",user)
             if(user.emailVerified){
                 setCurrentUser(user)
                 fetchUser(user)
             }else{
-                alert("Verify your email to access your account")
+                //alert("Verify your email to access your account")
+                setCurrentUser(user)
+                fetchUser(user)
             }
           
 

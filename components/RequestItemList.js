@@ -69,8 +69,8 @@ export default function RequestItemList({id, timestamp, title, details, displayN
 
 
   return (
-    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }} mt={3}>
-    <Card sx={{ maxWidth: 345 }} mt={3}>
+    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }} mt={3}>
+    <Card sx={{ maxWidth: 600 }} mt={3}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={photoURL}/>

@@ -19,7 +19,7 @@ function AppAppBar() {
           <Link
             variant="h6"
             underline="none"
-            color="inherit"
+            color="#ffffff"
             href="/"
             sx={{ fontSize: 24 }}
           >

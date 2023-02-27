@@ -1,6 +1,6 @@
 import { Avatar, Box, Container, IconButton, Typography } from '@mui/material'
 import { auth, db } from '../firebase';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import TodoList from '../components/TodoList'
 import { TodoContext } from '../TodoContext'
@@ -28,6 +28,9 @@ function Home({todosProps}) {
   const [alertMessage, setAlertMessage] = useState("")
   const [todo, setTodo] = useState({title:'',details:''})
 
+  // useEffect(()=>{
+  //   console.log(todosProps)
+  // },[])
 
   const showAlert = (type,msg) => {
     setAlertType(type)
@@ -46,7 +49,6 @@ function Home({todosProps}) {
   return (
     <TodoContext.Provider value={{showAlert, todo, setTodo}}>
        <AppForm>
-       <AppInsideBar />
         <Container maxWidth="sm">
          
 

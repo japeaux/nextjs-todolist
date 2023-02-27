@@ -44,20 +44,20 @@ const TodoList = ({todosProps}) => {
       ))}
       </Grid> */}
 
-<div>
-    {todos.map((todo, index) => (
-      <Grid item xs={2} sm={4} md={4} key={index} >
-        <RequestItemList key={todo.id}
-            id={todo.id} 
-            title={todo.title}
-            details={todo.details}
-            timestamp={todo.timestamp}
-            photoURL={todo.photoURL} 
-            displayName={todo.displayName}
-            email={todo.email}/>
-      </Grid>
-    ))}
-    </div>
+      <div>
+          {todos.map((todo, index) => (
+            <Grid item xs={2} sm={4} md={4} key={index} >
+              <RequestItemList key={todo.id}
+                  id={todo.id} 
+                  title={todo.title}
+                  details={todo.details}
+                  timestamp={todo.timestamp}
+                  photoURL={todo.photoURL} 
+                  displayName={todo.displayName}
+                  email={todo.email}/>
+            </Grid>
+          ))}
+          </div>
   </div>
    
 

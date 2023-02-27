@@ -26,7 +26,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://ExtraPartyMoney.com/">
+      <Link color="inherit" href="/">
         ExtraPartyMoney
       </Link>{' '}
       {new Date().getFullYear()}
@@ -41,6 +41,7 @@ const backgroundImage = require('../public/assets/16.png');
 export default function SignInSide() {
   const {  login, currentUser } = useAuth()
   const router = useRouter()
+  const [bgImage, setBgImage] = React.useState("/assets/16.png")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -54,7 +55,7 @@ export default function SignInSide() {
         if(userCredential.user.emailVerified){
           router.push('/dashboard')
         }else{
-          
+         
         }
         
       })
@@ -83,7 +84,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://firebasestorage.googleapis.com/v0/b/nextjstodo-93a52.appspot.com/o/loadInApp%2F16.png?alt=media&token=8c4ba11c-b173-4ab1-aeab-0698e80bba85)',
+            backgroundImage: 'url(/assets/16.png)',
           
              backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
