@@ -1,11 +1,5 @@
-
-import { auth, db } from '../firebase';
 import { useEffect, useState } from 'react'
 import { useAuth } from '../Auth';
-
-import { verifyIdToken } from '../firebaseAdmin';
-import { collection, getDocs,  orderBy, query, where, onSnapshot  } from 'firebase/firestore';
-import nookies from 'nookies'
 import {useRouter} from 'next/router'
 
 import withRoot from '../components/modules/withRoot';
@@ -34,12 +28,8 @@ import PhotoAlbum from './Author/sections/PhotoAlbum';
 
 
 
-function Tenderz({imagesProps}) {
+function Tenderz() {
   const {currentUser} = useAuth()
-  const [open,setOpen] = useState(false)
-  const [alertType, setAlertType] = useState("success")
-  const [alertMessage, setAlertMessage] = useState("")
-  const [todo, setTodo] = useState({title:'',details:''})
   const [bgImage, setBgImage] = useState("")
 
   useEffect(()=>{
@@ -51,13 +41,6 @@ function Tenderz({imagesProps}) {
     }
     
   },[currentUser])
-
-  const showAlert = (type,msg) => {
-    setAlertType(type)
-    setAlertMessage(msg)
-    setOpen(true)
-  }
-
   const router = useRouter();
 
   const OpenChat = async (e) =>{
@@ -71,7 +54,7 @@ function Tenderz({imagesProps}) {
 
   return (
     <>
-     <MKBox bgColor="black">
+     <MKBox bgColor="black"   minHeight="135rem">
           <MKBox
             minHeight="35rem"
             width="100%"
@@ -100,22 +83,9 @@ function Tenderz({imagesProps}) {
           >
             <Profile user = {currentUser} />
             {/* <Posts /> */}
-            <PhotoAlbum imagesProps={imagesProps} />
+            <PhotoAlbum id={currentUser?.id} />
           </Card>
-          <MKBox component="section" py={{ xs: 0, lg: 6 }}>
-            
-                <MKBox
-                  width="100%"
-                  bgColor="white"
-                  borderRadius="xl"
-                  shadow="xl"
-                  mb={6}
-                  sx={{ overflow: "hidden" }}
-                >
-                
-                </MKBox>
-              
-          </MKBox>
+        
         </MKBox>
       
       <AppFooter />
@@ -125,25 +95,3 @@ function Tenderz({imagesProps}) {
 }
 
 export default withRoot(Tenderz)
-
-export async function getServerSideProps(context){
-  try{
-    const cookies = nookies.get(context)
-    const token = await verifyIdToken(cookies.token)
-    const { id } = token;
-    const collectionRef = collection(db, "album")
-    const q = query(collectionRef,orderBy("timestamp", "desc"));
-    const querySnapshot = await getDocs(q)
-    let todos = []
-    querySnapshot.forEach((doc)=>{
-      todos.push({...doc.data(), id:doc.id, timestamp: doc.data().timestamp.toDate().getTime()})
-    })
-    return {
-      props: {
-        imagesProps: JSON.stringify(todos) || [],
-      }
-    }
-  } catch(error){
-    return { props:{}}
-  }
-}

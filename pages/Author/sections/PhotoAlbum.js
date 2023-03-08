@@ -179,12 +179,16 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import ButtonUploadAlbum from '../../../components/storage/ButtonUploadAlbum'
 import Typography from "../../../components/modules/components/Typography";
+import { useEffect } from "react";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../../firebase";
+import { useAuth } from "../../../Auth";
 
-export default function PhotoAlbum({imagesProps}) {
+export default function PhotoAlbum({id}) {
   // console.log(photos)
   // console.log(imagesProps)
-  const mapper = JSON.parse(imagesProps)
-  console.log(mapper)
+  const {currentUser} = useAuth()
+  const [mapper, setMapper] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -198,6 +202,23 @@ export default function PhotoAlbum({imagesProps}) {
     setCurrentImage(0);
     setViewerIsOpen(false);
   };
+
+        
+  async function fetchUser(){
+    if(id){
+      const usersRef = collection(db,"album");
+      const q = query(usersRef, where("user_id","==",id));
+      const querySnapshot = await getDocs(q);
+      const aux = querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id}))
+      setMapper(aux)
+    }
+   
+  }
+
+  useEffect(()=>{
+      fetchUser()
+  },[id])
+
 
   return (
     <div>

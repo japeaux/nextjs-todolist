@@ -47,14 +47,17 @@ export default function SignInSide() {
     const data = new FormData(e.currentTarget);
     if(checked){
       try {
-        console.log(data.get('email'))
+        console.log(data.get('email'),"dosodjso")
         await login( data.get('email'), data.get('password'))
         .then((userCredential) => {
           // Login 
+          console.log(userCredential,"userCredential")
+          console.log("is verifi", userCredential.user.emailVerified)
+
           if(userCredential.user.emailVerified){
             router.push('/dashboard')
           }else{
-           
+            showAlert('error',`Verify your email to confirm your account`)
           }
           
         })

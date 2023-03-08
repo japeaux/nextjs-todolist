@@ -222,8 +222,8 @@ function PersonalRequest() {
                             {listCat.map((list, index)=>(
                               <Button onClick={()=>ChooseCat(list.name)} key={index}>
                                 <MKTypography variant="body2" color="text" mb={1}>
-                                                {list.name}
-                                              </MKTypography>
+                                  {list.name}
+                                </MKTypography>
                               </Button>
                             ))} 
 
