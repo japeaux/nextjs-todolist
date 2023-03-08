@@ -103,7 +103,7 @@ function ProductHowItWorks() {
                     alt="suitcase"
                     sx={image}
                   />
-                  <Typography variant="h5" align="center" color="secondary" sx={{ zIndex: 2}}>
+                  <Typography variant="h5" align="center" color="primary" sx={{ zIndex: 2}}>
                     Find a request that wants to do it and apply for it.
                   </Typography>
                 </Box>
@@ -117,7 +117,7 @@ function ProductHowItWorks() {
                     alt="graph"
                     sx={image}
                   />
-                  <Typography variant="h5" align="center"   color="secondary" sx={{ zIndex: 2}}>
+                  <Typography variant="h5" align="center"   color="primary" sx={{ zIndex: 2}}>
                     Once the model is choosen, the model creates the content.
                   </Typography>
                 </Box>
@@ -131,7 +131,7 @@ function ProductHowItWorks() {
                     alt="clock"
                     sx={image}
                   />
-                  <Typography variant="h5" align="center" color="secondary" sx={{ zIndex: 2}}>
+                  <Typography variant="h5" align="center" color="primary" sx={{ zIndex: 2}}>
                     Sends the desired request to the client and gets paid.
                   </Typography>
                 </Box>
@@ -148,7 +148,7 @@ function ProductHowItWorks() {
                     alt="suitcase"
                     sx={image}
                   />
-                  <Typography variant="h5" align="center" color="secondary" sx={{ zIndex: 2}}>
+                  <Typography variant="h5" align="center" color="primary" sx={{ zIndex: 2}}>
                     Creates a request of the fetish desired.
                   </Typography>
                 </Box>
@@ -162,7 +162,7 @@ function ProductHowItWorks() {
                     alt="graph"
                     sx={image}
                   />
-                  <Typography variant="h5" align="center"   color="secondary" sx={{ zIndex: 2}}>
+                  <Typography variant="h5" align="center"   color="primary" sx={{ zIndex: 2}}>
                     Chooses the models that agreed on doing the request.
                   </Typography>
                 </Box>
@@ -176,7 +176,7 @@ function ProductHowItWorks() {
                     alt="clock"
                     sx={image}
                   />
-                  <Typography variant="h5" align="center" color="secondary" sx={{ zIndex: 2}}>
+                  <Typography variant="h5" align="center" color="primary" sx={{ zIndex: 2}}>
                     Receives the files from the models.
                   </Typography>
                 </Box>

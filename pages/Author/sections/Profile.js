@@ -162,7 +162,7 @@ function Profile({user}) {
 
                       
                         
-                      <MKButton variant="outlined" color="info" size="small" onClick={onStartEdit}>
+                      <MKButton variant="contained" color="info" size="small" onClick={onStartEdit}>
                         Edit about me
                       </MKButton>
 
@@ -180,10 +180,10 @@ function Profile({user}) {
                           onChange={e=>setBio(e.target.value)}
                         />
                         
-                      <MKButton variant="outlined" color="info" size="small" onClick={onCancel}>
+                      <MKButton variant="contained" color="info" size="small" onClick={onCancel}>
                         Cancel
                       </MKButton>
-                      <MKButton variant="outlined" color="info" size="small" onClick={onSave}>
+                      <MKButton variant="contained" color="info" size="small" onClick={onSave}>
                         Save
                       </MKButton> 
                     </>)}

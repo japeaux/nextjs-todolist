@@ -119,7 +119,7 @@ const handleSubmit = (e) => {
   return (
     <div>
   
-        <MKButton onClick={handleClickOpen}  variant="outlined" color="info" size="small">
+        <MKButton onClick={handleClickOpen}  variant="contained" color="info" size="small">
             Add photo to gallery
         </MKButton>
         <Dialog
