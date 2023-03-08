@@ -8,7 +8,7 @@ function ProductSmokingHero() {
   return (
     <Container
       component="section"
-      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 9 }}
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 19 }}
     >
       <Button
         sx={{

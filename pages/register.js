@@ -5,9 +5,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from '../components/modules/components/Typography';
-import AppFooter from '../components/modules/views/AppFooter';
 import AppAppBar from '../components/modules/views/AppAppBar';
-import AppForm from '../components/modules/views/AppForm';
 
 import BeeTenderzForm from '../components/modules/views/BeeTenderzForm';
 import { email, required } from '../components/modules/form/validation';
@@ -15,7 +13,6 @@ import RFTextField from '../components/modules/form/RFTextField';
 import FormButton from '../components/modules/form/FormButton';
 import FormFeedback from '../components/modules/form/FormFeedback';
 import withRoot from '../components/modules/withRoot';
-import TextField from '@mui/material/TextField';
 import { useAuth } from '../Auth';
 import { useRouter } from 'next/router'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
@@ -28,10 +25,6 @@ function Register() {
   const [sent, setSent] = useState(false);
   const {  signup, setUserFrom, sendEmailForVerification, sendEmailToVerify, getUserInfos } = useAuth()
   const router = useRouter()
-  const [data, setData] = useState({
-    email: '',
-    password: '',
-  })
 
 
   const [value, setValue] = useState('client');

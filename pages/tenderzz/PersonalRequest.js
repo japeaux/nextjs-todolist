@@ -191,7 +191,7 @@ function PersonalRequest() {
                       <Grid item xs={12} pr={1} mb={6}>
                           
                             {chooseCat?.map((choose, index)=>(
-                             <Button onClick={()=>removeCat(choose)} sx={{ boxShadow:2,  margin: 2 ,p:1  }}>
+                             <Button onClick={()=>removeCat(choose)} sx={{ boxShadow:2,  margin: 2 ,p:1  }} key={index}>
                                 <MKTypography variant="body2" color="text">
                                   {choose}  
                                 </MKTypography>
@@ -220,7 +220,7 @@ function PersonalRequest() {
                             />
 
                             {listCat.map((list, index)=>(
-                              <Button onClick={()=>ChooseCat(list.name)}>
+                              <Button onClick={()=>ChooseCat(list.name)} key={index}>
                                 <MKTypography variant="body2" color="text" mb={1}>
                                                 {list.name}
                                               </MKTypography>
