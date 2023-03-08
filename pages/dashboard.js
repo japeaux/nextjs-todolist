@@ -1,8 +1,8 @@
-import { Avatar, Box, Container, IconButton, Typography } from '@mui/material'
+import { Avatar, Box, Container, Grid, IconButton, Typography } from '@mui/material'
 import { auth, db } from '../firebase';
 import { useEffect, useState } from 'react'
 
-import TodoList from '../components/TodoList'
+// import TodoList from '../components/TodoList'
 import { TodoContext } from '../TodoContext'
 
 import { useAuth } from '../Auth';
@@ -18,9 +18,12 @@ import withRoot from '../components/modules/withRoot';
 import Toolbar from '../components/modules/components/Toolbar';
 import AppFooter from '../components/modules/views/AppFooter';
 import AppForm from '../components/modules/views/AppForm';
+import BeeTenderzForm from '../components/modules/views/BeeTenderzForm';
 
-
-
+import RequestList from '../components/FeedHome/RequestsList'
+import TopModels from '../components/FeedHome/TopModels';
+import MKBox from '../components/MKBox';
+import MKTypography from '../components/MKTypography';
 function Home({todosProps}) {
   const {currentUser} = useAuth()
   const [open,setOpen] = useState(false)
@@ -48,21 +51,23 @@ function Home({todosProps}) {
 
   return (
     <TodoContext.Provider value={{showAlert, todo, setTodo}}>
-       <AppForm>
-        <Container maxWidth="sm">
-         
+       <BeeTenderzForm>
+          
+          <Grid container spacing={2}>
+            <Grid item xs={8}>
+              <RequestList  todosProps={todosProps}/>
+            </Grid>
 
-          <Box sx={{display:'flex', justifyContent:'space-between'}} mt={1}>
-            
-          </Box>
-        
-          <TodoList  todosProps={todosProps}/>
+            <Grid item xs={4}>
+              <TopModels/>
+            </Grid>
+          </Grid>
 
-        </Container>
+          {/* <TodoList  todosProps={todosProps}/> */}
 
-      </AppForm>
+
+      </BeeTenderzForm>
       
-      <AppFooter />
     </TodoContext.Provider>
     
     )

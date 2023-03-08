@@ -6,14 +6,17 @@ import Container from '@mui/material/Container';
 import Typography from '../components/Typography';
 import TextField from '../components/TextField';
 import imgBack from '../../../public/assets/16.png'
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
+import {  IconButton } from '@mui/material'
 
 function Copyright() {
   return (
     <React.Fragment>
       {'© '}
-      <Link color="inherit" href="https://ExtraPartyMoney.com/">
-        ExtraPartyMoney
+      <Link color="inherit" href="https://BeeTenderz.com/">
+      BeeTenderz
       </Link>{' '}
       {new Date().getFullYear()}
     </React.Fragment>
@@ -45,12 +48,16 @@ const LANGUAGES = [
 ];
 
 export default function AppFooter() {
+  const StartEdit = () => {
+    console.log("")
+  };
+
   return (
     <Typography
       component="footer"
-      sx={{ display: 'flex', bgcolor: "#eeeeee" }} //secondary.light
+      sx={{ display: 'flex', bgcolor: "#E9AB17", mt:30 }} //secondary.light
     >
-      <Container sx={{ my: 8, display: 'flex' }}>
+      <Container sx={{ my: 5, display: 'flex' }}>
         <Grid container spacing={5}>
           <Grid item xs={6} sm={4} md={3}>
             <Grid
@@ -62,18 +69,27 @@ export default function AppFooter() {
             >
               
               <Grid item sx={{ display: 'flex' }}>
-                <Box component="a" href="https://facebook.com/" sx={iconStyle}>
+                <Link href="https://facebook.com/" rel="sponsored" >
+                  <FacebookIcon fontSize="large" />
+                </Link>
+                <Link href="https://twitter.com/" rel="sponsored" >
+                  <TwitterIcon fontSize="large" />
+                </Link>
+
+
+               
+                {/* <Box component="a" href="https://facebook.com/" sx={iconStyle}>
                   <img
                     src={imgBack}
                     alt="Facebook"
                   />
-                </Box>
-                <Box component="a" href="https://twitter.com/" sx={iconStyle}>
+                </Box> */}
+                {/* <Box component="a" href="https://twitter.com/" sx={iconStyle}>
                   <img
                     src="/static/themes/onepirate/appFooterTwitter.png"
                     alt="Twitter"
                   />
-                </Box>
+                </Box> */}
               </Grid>
               <Grid item>
                 <Copyright />
@@ -113,7 +129,7 @@ export default function AppFooter() {
               ))}
             </TextField> */}
             <Typography variant="caption">
-              {'ExtraPartyMoney is an e-social platform for adults, as we host adult content. For more information on our platform, please check our .'}
+              {'BeeTenderz is an e-social platform for adults, as we host adult content. For more information on our platform, please check our .'}
               <Link href="/positivity" rel="sponsored" title="Positivity">
                 Positivity Center
               </Link>
@@ -122,7 +138,7 @@ export default function AppFooter() {
           </Grid>
           <Grid item>
             {/* <Typography variant="caption">
-              {'ExtraPartyMoney is an e-social platform for adults, as we host adult content. For more information on our platform, please check our .'}
+              {'BeeTenderz is an e-social platform for adults, as we host adult content. For more information on our platform, please check our .'}
               <Link href="/positivity" rel="sponsored" title="Positivity">
                 Positivity Center
               </Link>

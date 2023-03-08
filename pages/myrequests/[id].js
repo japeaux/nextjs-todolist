@@ -98,8 +98,8 @@ const MyResquests = ({todoProps, id}) => {
 
                        
                           <CardActions>
-                          <Link href="/dashboard">
-                              <Button size="small">Back to home</Button>
+                          <Link href="/myrequest">
+                              <Button size="small">Back to my requests</Button>
                           </Link>
                       </CardActions>
   

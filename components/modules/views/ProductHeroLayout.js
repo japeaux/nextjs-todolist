@@ -9,12 +9,14 @@ const ProductHeroLayoutRoot = styled('section')(({ theme }) => ({
   color: theme.palette.common.white,
   position: 'relative',
   display: 'flex',
+  
   [theme.breakpoints.up('sm')]: {
     height: '75vh',
-    width:'100vw',
+  
     minHeight: 500,
     maxHeight: 1300,
-  },
+  },backgroundColor: 'black',
+  
 }));
 
 const Background = styled(Box)({
@@ -25,7 +27,8 @@ const Background = styled(Box)({
   bottom: 0,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
-  zIndex: -2,
+  zIndex: 0,
+  
 });
 
 function ProductHeroLayout(props) {
@@ -56,17 +59,17 @@ function ProductHeroLayout(props) {
             bottom: 0,
             backgroundColor: 'common.black',
             opacity: 0.5,
-            zIndex: -1,
+            zIndex: 1,
           }}
         />
         <Background sx={sxBackground} />
         <Box
           component="img"
-          src="/static/themes/onepirate/productHeroArrowDown.png"
+          src="assets/arrowDown.png"
           height="16"
           width="12"
           alt="arrow down"
-          sx={{ position: 'absolute', bottom: 32 }}
+          sx={{ position: 'absolute', bottom: 32, zIndex:2 }}
         />
       </Container>
     </ProductHeroLayoutRoot>

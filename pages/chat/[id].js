@@ -2,14 +2,21 @@ import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/fires
 import React from 'react'
 import styled from 'styled-components'
 import ChatContent from '../../components/ChatContent'
+import AppInsideBar from '../../components/modules/views/AppInsideBar'
 import { db } from '../../firebase'
 const ChatBox = ({chat, id, messages}) => {
   return (
-    <Container>
-        <ChatContainer>
-            <ChatContent chat={chat} chat_id={id} messagesProps={messages}/>
-        </ChatContainer>
-    </Container>
+    <>
+         <div style={{marginTop:"60px"}}>
+                <Container>
+            
+                <ChatContainer>
+                    <ChatContent chat={chat} chat_id={id} messagesProps={messages}/>
+                </ChatContainer>
+            </Container>
+        </div>
+    </>
+   
   )
 }
 
@@ -38,7 +45,7 @@ export async function getServerSideProps(context){
 
 const Container = styled.div`
     display:flex;
-    background-color:#f8fafc;
+    background-color:"red";
     width:100%;
 `
 
@@ -46,7 +53,7 @@ const ChatContainer = styled.div`
     flex:1;
     overflow:scroll;
     max-height:100vh;
-
+    height:80vh;
     ::-webkit-scrollbar{
         display:none;
     }

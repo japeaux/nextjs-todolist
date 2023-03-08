@@ -48,8 +48,8 @@ a {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-position: 50%;
-  background-image: url(http://placekitten.com/240/240);
+  background-position: 100%;
+  /* background-image: url(http://placekitten.com/240/240); */
   visibility: visible;
   -webkit-transform: rotate(-60deg);
      -moz-transform: rotate(-60deg);
@@ -58,12 +58,12 @@ a {
           transform: rotate(-60deg);
   }
 .hexagon-in2:hover {
-  background-image: url(http://placekitten.com/241/241);
+  /* background-image: url(http://placekitten.com/241/241); */
   }
 
 .hexagon1 {
-  width: 400px;
-  height: 200px;
+  width: 300px;
+  height: 150px;
   margin: 0 0 0 0px;
   }
 .hexagon2 {
@@ -112,9 +112,17 @@ a {
   .gallery > img:nth-child(4) {--_y: calc(-50% - .5*var(--g))}
   .gallery > img:nth-child(5), 
   .gallery > img:nth-child(6) {--_y: calc( 50% + .5*var(--g))}
+
+  .gallery > img:nth-child(8) {--_y: calc( 150% + 1.5*var(--g))}
+  .gallery > img:nth-child(8) {--_x: calc( -90% + 1.5*var(--g))}
+
+  .gallery > img:nth-child(9) {--_y: calc( 150% + 1.5*var(--g))}
+  .gallery > img:nth-child(9) {--_x: calc( 70% + 1.5*var(--g))}
+
+  .gallery > img:nth-child(10) {--_y: calc(-50% - .5*var(--g))}
+  .gallery > img:nth-child(10) {--_y: calc(225% - 1.4*var(--g))}
+
   
-
-
 .hexagon3{
   -webkit-clip-path: polygon( 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25% );
   clip-path: polygon( 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25% );

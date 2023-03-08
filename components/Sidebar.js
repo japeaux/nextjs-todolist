@@ -27,7 +27,7 @@ const Sidebar = () => {
 
     useEffect(()=>{
         const chatsRef = collection(db,"chats")
-        console.log(currentUser.uid, "doiasiodaijsioj")
+        //console.log(currentUser.uid, "doiasiodaijsioj")
         const q = query(chatsRef,where("users", "array-contains", currentUser.id));
         const unsubscribe = onSnapshot(q,(querySnapshot)=>{
             setChats(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id})))
@@ -42,10 +42,11 @@ const Sidebar = () => {
             const querySnapshot = await getDocs(q);
             console.log('querysnapshots', querySnapshot, currentUser?.email)
             setFriends(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id})))
-            console.log(friends)
+            console.log("friendsssss", friends)
         }
         fetchFriends()
     },[])
+    
     const [searchFriends, setSearchFriends] = useState(false)
     useEffect(()=>{
         const checkIfClickedOutside = e =>{
@@ -88,6 +89,9 @@ const Sidebar = () => {
         {/* <Header>
             <CustomVerticalMore/>
         </Header> */}
+        <div style={{marginTop:"60px"}}>
+            
+        </div>
         <SearchChat>
             <SearchBar>
                 <SearchIcon/>

@@ -60,7 +60,7 @@ const ChatContent = ({chat, chat_id, messagesProps}) => {
 
     const sendMessage = async (e) =>{
         e.preventDefault();
-        const usersRef = doc(db,"users",currentUser.uid)
+        const usersRef = doc(db,"users",currentUser.id)
         setDoc(usersRef, {
             lastSeen:serverTimestamp()} , {merge:true})
         const messagesRef = collection(db, "chats", chat_id,"messages");

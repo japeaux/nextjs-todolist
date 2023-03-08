@@ -6,7 +6,7 @@ import Home2 from './Home'
   return (
     <div >
       <Head>
-        <title>Side request of</title>
+        <title>Bzzzzzz</title>
         <meta name="description" content="Oi" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

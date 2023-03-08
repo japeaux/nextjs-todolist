@@ -45,17 +45,17 @@ const OpenContract = async (e) =>{
 
   return (
     <div>
-      <AppBar position="fixed" sx={{backgroundColor:"#242424"}}>
+      <AppBar position="fixed" sx={{backgroundColor:"#111111"}}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
           <Link
             variant="h6"
             underline="none"
-            color="#ffffff"
+            color="#E9AB17"
             href="/dashboard"
             sx={{ fontSize: 24 }}
           >
-            {'ExtraPartyMoney'}
+            {'BeeTenderz'}
           </Link>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             {/* <Link
@@ -70,14 +70,14 @@ const OpenContract = async (e) =>{
 
            
             <IconButton  onClick={e=>OpenContract(e)}>
-              <RequestPageIcon  color="secondary"/>
+              <RequestPageIcon  color="info"/>
             </IconButton>
 
             <IconButton  onClick={e=>OpenChat(e)}>
-              <ChatIcon  color="secondary"/>
+              <ChatIcon  color="info"/>
             </IconButton>
             <IconButton  onClick={e=>OpenHome(e)}>
-                <HomeIcon  color="secondary"/>
+                <HomeIcon  color="info"/>
             </IconButton>
 
            

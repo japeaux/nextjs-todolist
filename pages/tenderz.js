@@ -1,10 +1,6 @@
 
 import { auth, db } from '../firebase';
 import { useEffect, useState } from 'react'
-
-import TodoList from '../components/TodoList'
-import { TodoContext } from '../TodoContext'
-
 import { useAuth } from '../Auth';
 
 import { verifyIdToken } from '../firebaseAdmin';
@@ -12,11 +8,8 @@ import { collection, getDocs,  orderBy, query, where, onSnapshot  } from 'fireba
 import nookies from 'nookies'
 import {useRouter} from 'next/router'
 
-import AppInsideBar from '../components/modules/views/AppInsideBar';
 import withRoot from '../components/modules/withRoot';
-import Toolbar from '../components/modules/components/Toolbar';
 import AppFooter from '../components/modules/views/AppFooter';
-import AppForm from '../components/modules/views/AppForm';
 
 import Card from "@mui/material/Card";
 
@@ -28,9 +21,7 @@ import MKBox from "../components/MKBox";
 
 // Author page sections
 import Profile from "./Author/sections/Profile";
-import Posts from "./Author/sections/Posts";
 import Contact from "./Author/sections/Contact";
-import Footer from "./Author/sections/Footer";
 
 // // Routes
 // import routes from "routes";
@@ -39,7 +30,7 @@ import Footer from "./Author/sections/Footer";
 // import bgImage from "/bg2.jpg";
 // import Gallery from "./Author/sections/Gallery";
 // import ProductCategories from "../components/modules/views/ProductCategories";
-import Album from './Author/sections/Album';
+import PhotoAlbum from './Author/sections/PhotoAlbum';
 
 
 
@@ -109,11 +100,22 @@ function Tenderz({imagesProps}) {
           >
             <Profile user = {currentUser} />
             {/* <Posts /> */}
-            {/* <ProductCategories imagesProps={imagesProps} /> */}
-            <Album imagesProps={imagesProps} />
+            <PhotoAlbum imagesProps={imagesProps} />
           </Card>
-          <Contact />
-          {/* <Footer /> */}
+          <MKBox component="section" py={{ xs: 0, lg: 6 }}>
+            
+                <MKBox
+                  width="100%"
+                  bgColor="white"
+                  borderRadius="xl"
+                  shadow="xl"
+                  mb={6}
+                  sx={{ overflow: "hidden" }}
+                >
+                
+                </MKBox>
+              
+          </MKBox>
         </MKBox>
       
       <AppFooter />

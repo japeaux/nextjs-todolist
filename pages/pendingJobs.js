@@ -1,4 +1,3 @@
-import {  Container } from '@mui/material'
 import { db } from '../firebase';
 import { useState } from 'react'
 
@@ -11,15 +10,14 @@ import { verifyIdToken } from '../firebaseAdmin';
 import { collection, getDocs,  orderBy, query, where  } from 'firebase/firestore';
 import nookies from 'nookies'
 
-import AppInsideBar from '../components/modules/views/AppInsideBar';
 import withRoot from '../components/modules/withRoot';
-import AppFooter from '../components/modules/views/AppFooter';
-import AppForm from '../components/modules/views/AppForm';
-import PendingList from '../components/PendingList';
+import PendingList from '../components/FeedPendingJobs/PendingList';
+import BeeTenderzForm from '../components/modules/views/BeeTenderzForm';
 
 
 
 function PendingJobs({todosProps}) {
+
   const {currentUser} = useAuth()
   const [open,setOpen] = useState(false)
   const [alertType, setAlertType] = useState("success")
@@ -45,22 +43,32 @@ function PendingJobs({todosProps}) {
 
 
   return (
-    <TodoContext.Provider value={{showAlert, todo, setTodo}}>
+    // <TodoContext.Provider value={{showAlert, todo, setTodo}}>
       
-      <AppForm>
+    //   <AppForm>
       
-        <Container maxWidth="sm">
+    //     <Container maxWidth="sm">
           
-          <AppInsideBar />
+    //       <AppInsideBar />
         
-          <PendingList  todosProps={todosProps}/>
+    //       <PendingList  todosProps={todosProps}/>
 
-        </Container>
+    //     </Container>
 
-      </AppForm>
+    //   </AppForm>
       
-      <AppFooter />
-    </TodoContext.Provider>
+    //   <AppFooter />
+    // </TodoContext.Provider>
+    <TodoContext.Provider value={{showAlert, todo, setTodo}}>
+      <BeeTenderzForm>
+        <PendingList  todosProps={todosProps}/>
+        
+        {/* <TodoList  todosProps={todosProps}/> */}
+
+    </BeeTenderzForm>
+    
+  </TodoContext.Provider>
+  
     
     )
 }

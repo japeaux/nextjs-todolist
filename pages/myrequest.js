@@ -1,5 +1,3 @@
-import { Avatar, Box, Container, IconButton, Typography } from '@mui/material'
-
 import { auth, db } from '../firebase';
 
 import { TodoContext } from '../TodoContext'
@@ -12,12 +10,10 @@ import { collection, getDocs,  orderBy, query, where  } from 'firebase/firestore
 import nookies from 'nookies'
 
 
-import AppInsideBar from '../components/modules/views/AppInsideBar';
 import withRoot from '../components/modules/withRoot';
-import AppFooter from '../components/modules/views/AppFooter';
-import AppForm from '../components/modules/views/AppForm';
-import RequestList from '../components/RequestList';
 import { useState } from 'react';
+import BeeTenderzForm from '../components/modules/views/BeeTenderzForm';
+import MyRequestList from '../components/FeedMyRequests/MyRequestsList';
 
 
 
@@ -37,28 +33,18 @@ function MyRequest({todosProps}) {
 
 
   return (
+
     <TodoContext.Provider value={{showAlert, todo, setTodo}}>
-       <AppForm>
-      
-      <Container maxWidth="sm">
-      <AppInsideBar />
-        <Box sx={{display:'flex', justifyContent:'space-between'}} mt={1}>
-          
+      <BeeTenderzForm>
+        <MyRequestList  todosProps={todosProps}/>
+        
+        {/* <TodoList  todosProps={todosProps}/> */}
+
+    </BeeTenderzForm>
+    
+  </TodoContext.Provider>
   
-
-        </Box>
-
-              
-
-
-        <RequestList  todosProps={todosProps}/>
-
-      </Container>
-
-       </AppForm>
-      
-      <AppFooter />
-    </TodoContext.Provider>
+  
     
     )
 }

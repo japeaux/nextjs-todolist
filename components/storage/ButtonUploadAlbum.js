@@ -36,10 +36,11 @@ export default function ButtonUploadBanner() {
 const [imgUrl, setImgUrl] = useState(null);
 const [progresspercent, setProgresspercent] = useState(0);
 
-const onSend = async (downloadURL) =>{
-    console.log("pending", downloadURL)
+const onSend = async (downloadURL, width, height) =>{
+
+    console.log("pending", height, width,downloadURL)
     const collectionRef = collection(db,"album")
-    const docRef = await addDoc(collectionRef, { user_id:currentUser.id ,timestamp: serverTimestamp(), picURL:downloadURL})
+    const docRef = await addDoc(collectionRef, { user_id:currentUser.id ,timestamp: serverTimestamp(), src:downloadURL, height:height, width:width})
     // const docRef  = doc(db,"users", currentUser.id)
     // const todoUpdated = {...currentUser, bannerPhotoURL:downloadURL}
     // await updateDoc(docRef,todoUpdated)
@@ -48,6 +49,30 @@ const onSend = async (downloadURL) =>{
 const [uploading, setUploading] = useState(false);
 const [selectedImage, setSelectedImage] = useState("");
 const [selectedFile, setSelectedFile] = useState();
+
+function imageSize(url) {
+  const img = document.createElement("img");
+
+  const promise = new Promise((resolve, reject) => {
+    img.onload = () => {
+      // Natural size is the actual image size regardless of rendering.
+      // The 'normal' `width`/`height` are for the **rendered** size.
+      const width  = img.naturalWidth;
+      const height = img.naturalHeight; 
+
+      // Resolve promise with the width and height
+      resolve({width, height});
+    };
+
+    // Reject promise on error
+    img.onerror = reject;
+  });
+
+  // Setting the source makes it start downloading and eventually call `onload`
+  img.src = url;
+
+  return promise;
+}
 
 
 
@@ -58,6 +83,11 @@ const handleSubmit = (e) => {
     if (!file) return;
     const storageRef = ref(storage, `${currentUser.id}/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
+
+    //console.log(selectedImage)
+   
+    //console.log(file)
+      
 
     uploadTask.on("state_changed",
         (snapshot) => {
@@ -71,10 +101,13 @@ const handleSubmit = (e) => {
         },
         () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      
             console.log("downloadURL",downloadURL);
             setUploading(false)
             setImgUrl(downloadURL)
-            onSend(downloadURL)
+            imageSize(selectedImage).then(data=>{
+              onSend(downloadURL, data.width, data.height)
+            })
             handleClose()
         });
         }

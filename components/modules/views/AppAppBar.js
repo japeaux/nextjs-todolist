@@ -13,17 +13,17 @@ const rightLink = {
 function AppAppBar() {
   return (
     <div>
-      <AppBar position="fixed" sx={{backgroundColor:"#242424"}}>
+      <AppBar position="fixed" sx={{backgroundColor:"#111111"}}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
           <Link
             variant="h6"
             underline="none"
-            color="#ffffff"
+            color="#E9AB17"
             href="/"
             sx={{ fontSize: 24 }}
           >
-            {'ExtraPartyMoney'}
+            {'BeeTenderz'}
           </Link>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <Link
@@ -39,7 +39,7 @@ function AppAppBar() {
               variant="h6"
               underline="none"
               href="/register"
-              sx={{ ...rightLink, color: 'secondary.main' }}
+              sx={{ ...rightLink, color: 'info.main' }}
             >
               {'Register'}
             </Link>

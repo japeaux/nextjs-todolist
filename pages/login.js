@@ -17,17 +17,19 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuth } from '../Auth';
 import { useRouter } from 'next/router'
 
-import imgBack from '../public/assets/16.png'
+import imgBack from '../public/ico.svg'
 
 import Image from "next/image";
 import AppAppBar from '../components/modules/views/AppAppBar';
+import { Alert, Snackbar } from '@mui/material';
+import { useState } from 'react';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="/">
-        ExtraPartyMoney
+      BeeTenderz
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -35,36 +37,65 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
-const backgroundImage = require('../public/assets/16.png');
 
 export default function SignInSide() {
   const {  login, currentUser } = useAuth()
   const router = useRouter()
-  const [bgImage, setBgImage] = React.useState("/assets/16.png")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = new FormData(e.currentTarget);
-    
-    try {
-      console.log(data.get('email'))
-      await login( data.get('email'), data.get('password'))
-      .then((userCredential) => {
-        // Login 
-        if(userCredential.user.emailVerified){
-          router.push('/dashboard')
-        }else{
-         
-        }
-        
-      })
-
-     
-    } catch (err) {
-      console.log("err", err)
+    if(checked){
+      try {
+        console.log(data.get('email'))
+        await login( data.get('email'), data.get('password'))
+        .then((userCredential) => {
+          // Login 
+          if(userCredential.user.emailVerified){
+            router.push('/dashboard')
+          }else{
+           
+          }
+          
+        })
+  
+       
+      } catch (err) {
+        console.log("err", err)
+      }
+    }else{
+      showAlert('error',`You must be older than 18 years old to access this site`)
     }
+    
   }
+
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+    console.log(checked)
+  };
+
+  const [alertType, setAlertType] = useState("success")
+  const [alertMessage, setAlertMessage] = useState("")
+  const [open, setOpen] = useState(false)
+
+  const showAlert = (type,msg) => {
+    setAlertType(type)
+    setAlertMessage(msg)
+    setOpen(true)
+  }
+
+  
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+
 
 
   React.useEffect(()=>{
@@ -75,7 +106,7 @@ export default function SignInSide() {
   },[])
   
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -84,7 +115,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(/assets/16.png)',
+            backgroundImage: 'url(/assets/beetenderzz.svg)',
           
              backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
@@ -99,7 +130,7 @@ export default function SignInSide() {
             src={imgBack}
             alt="Picture of the author"
           /> */}
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ backgroundColor:'#111'}}>
           <Box
             sx={{
               my: 8,
@@ -109,10 +140,17 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
+            <Avatar sx={{ m: 1, bgcolor: 'white' }}>
+       
+                  
+              <Image
+                src={imgBack}
+                alt="Picture of the author"
+              />
+
+              
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" color="primary"> 
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -125,6 +163,7 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                color="primary"
               />
               <TextField
                 margin="normal"
@@ -135,10 +174,13 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                color="primary"
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="I am 18 years of age or older"
+                control={<Checkbox value="remember" color="primary"  
+                onChange={handleChange}/>}
+                label={<Typography component="body1" variant="h5"  sx={{ fontSize: 14 }}  color="primary">I am 18 years of age or older</Typography>}
+                color="primary"
               />
               <Button
                 type="submit"
@@ -156,16 +198,24 @@ export default function SignInSide() {
                   </Link> */}
                 </Grid>
                 <Grid item>
-                  <Link href="/register" variant="body2">
+                  <Link href="/register" variant="body2" color="primary">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 5 }} color="primary"/>
             </Box>
           </Box>
+
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{vertical:'bottom', horizontal:'center'}}>
+            <Alert onClose={handleClose} severity={alertType} sx={{ width: '100%' }}>
+              {alertMessage}
+            </Alert>
+          </Snackbar>
+
+          
         </Grid>
       </Grid>
-    </ThemeProvider>
+    </>
   );
 }

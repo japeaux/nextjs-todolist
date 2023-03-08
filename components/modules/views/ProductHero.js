@@ -3,9 +3,8 @@ import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 
-const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400';
-
+const backgroundImage = "/assets/16.png";
+ 
 export default function ProductHero() {
   return (
     <ProductHeroLayout
@@ -16,28 +15,30 @@ export default function ProductHero() {
       }}
     >
    
-      <Typography color="inherit" align="center" variant="h2" marked="center">
+      <Typography color="inherit" align="center" variant="h2" marked="center" sx={{mt:10, zIndex:2}}>
         Find your model
       </Typography>
       <Typography
         color="inherit"
         align="center"
         variant="h5"
-        sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
+        sx={{ mb: 4, mt: { xs: 4, sm: 10 } , zIndex:2}}
       >
-        Enjoy searching for the perfect model to make your fetiche come true.
+        Enjoy searching for the perfect model to make your fetish come true.
       </Typography>
       <Button
         color="secondary"
         variant="contained"
         size="large"
         component="a"
-        href="/register/"
-        sx={{ minWidth: 200 }}
+        href="/register"
+       
+        sx={{ minWidth: 200 ,zIndex:4}}
       >
         Register
       </Button>
-      <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
+      
+      <Typography variant="body2" color="inherit" sx={{ mt: 2,  zIndex:2 }}>
         Discover the experience
       </Typography>
     </ProductHeroLayout>

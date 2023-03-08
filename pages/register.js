@@ -8,6 +8,8 @@ import Typography from '../components/modules/components/Typography';
 import AppFooter from '../components/modules/views/AppFooter';
 import AppAppBar from '../components/modules/views/AppAppBar';
 import AppForm from '../components/modules/views/AppForm';
+
+import BeeTenderzForm from '../components/modules/views/BeeTenderzForm';
 import { email, required } from '../components/modules/form/validation';
 import RFTextField from '../components/modules/form/RFTextField';
 import FormButton from '../components/modules/form/FormButton';
@@ -18,24 +20,48 @@ import { useAuth } from '../Auth';
 import { useRouter } from 'next/router'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Alert, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Snackbar } from '@mui/material';
+import { useState } from 'react';
 
 
 function Register() {
-  const [sent, setSent] = React.useState(false);
+  const [sent, setSent] = useState(false);
   const {  signup, setUserFrom, sendEmailForVerification, sendEmailToVerify, getUserInfos } = useAuth()
   const router = useRouter()
-  const [data, setData] = React.useState({
+  const [data, setData] = useState({
     email: '',
     password: '',
   })
 
 
-  const [value, setValue] = React.useState('client');
+  const [value, setValue] = useState('client');
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+
+  
+  const [alertType, setAlertType] = useState("success")
+  const [alertMessage, setAlertMessage] = useState("")
+  const [open, setOpen] = useState(false)
+
+  const showAlert = (type,msg) => {
+    setAlertType(type)
+    setAlertMessage(msg)
+    setOpen(true)
+  }
+
+  
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+
 
 
 
@@ -81,12 +107,12 @@ function Register() {
       // getUserInfos()
         // ...
       })
-        alert("We have send you an email for verification")
-       router.push('/login')
+        showAlert('success',`We have send you an email for verification`)
+        router.push('/login')
     } catch (err) {
       console.log("err", err)
       if(err.code == "auth/email-already-in-use"){
-        alert("Email already in use")
+        showAlert('error',`Email already in use`)
     }
     }
 
@@ -96,14 +122,14 @@ function Register() {
 
 
   return (
-    <React.Fragment>
+    <>
       <AppAppBar />
-      <AppForm>
-        <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+      <BeeTenderzForm>
+      <React.Fragment>
+          <Typography variant="h3" gutterBottom marked="center" align="center"  color="primary">
             Register
           </Typography>
-          <Typography variant="body2" align="center">
+          <Typography variant="body2" align="center"  color="primary">
             <Link href="/login/" underline="always">
               Already have an account?
             </Link>
@@ -127,6 +153,7 @@ function Register() {
                     label="Username"
                     name="displayName"
                     required
+                    color="primary"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -167,16 +194,17 @@ function Register() {
                 type="password"
                 margin="normal"
               />
-                    <FormControl>
-                <FormLabel id="demo-controlled-radio-buttons-group">I want to:</FormLabel>
+              <FormControl>
+                <FormLabel id="demo-controlled-radio-buttons-group"  color="primary">I want to:</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-controlled-radio-buttons-group"
                   name="controlled-radio-buttons-group"
                   value={value}
                   onChange={handleChange}
+                  color="primary"
                 >
-                  <FormControlLabel value="client" control={<Radio />} label="Be a Member" />
-                  <FormControlLabel value="model" control={<Radio />} label="Be a Model for EPM " />
+                  <FormControlLabel value="client" control={<Radio />} label={<Typography component="body1" variant="h5"  sx={{ fontSize: 14 }}  color="primary">Be a Member</Typography>}/>
+                  <FormControlLabel value="model" control={<Radio />} label={<Typography component="body1" variant="h5"  sx={{ fontSize: 14 }}  color="primary">Be a Model for BeeTenderz</Typography>}/>
                 </RadioGroup>
               </FormControl>
 
@@ -201,9 +229,17 @@ function Register() {
             </Box>
           )}
         </Form>
-      </AppForm>
-      <AppFooter />
-    </React.Fragment>
+
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{vertical:'bottom', horizontal:'center'}}>
+            <Alert onClose={handleClose} severity={alertType} sx={{ width: '100%' }}>
+              {alertMessage}
+            </Alert>
+          </Snackbar>
+
+
+      </BeeTenderzForm>
+      
+    </>
   );
 }
 

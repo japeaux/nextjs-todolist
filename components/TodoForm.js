@@ -29,7 +29,7 @@ const TodoForm = () => {
 
 
     const onSubmit = async () =>{
-      console.log(todo)
+      console.log(todo, currentUser)
       // if(todo?.hasOwnProperty('timestamp')){
       //     //update
       //   const docRef  = doc(db,"todo",todo.id)
@@ -40,7 +40,7 @@ const TodoForm = () => {
 
       // }else{
         const collectionRef = collection(db,"todo")
-        const docRef = await addDoc(collectionRef, {...todo, email:currentUser.email ,timestamp: serverTimestamp(), displayName:currentUser.displayName, photoURL:currentUser.photoURL })
+        const docRef = await addDoc(collectionRef, {...todo, email:currentUser.email ,timestamp: serverTimestamp(), displayName:currentUser.displayName, photoURL:currentUser.photoURL, idUser:currentUser.id })
 
         setTodo({title:'', details:''})
         showAlert('success',`New request has been added successfully`)

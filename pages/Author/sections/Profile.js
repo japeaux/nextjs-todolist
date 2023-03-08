@@ -22,19 +22,6 @@ import { db } from "../../../firebase";
 import MKInput from "../../../components/MKInput";
 
 
-//import TextField from "../../../assets/theme/components/form/textField";
-
-
-
-// const HEXAGON_MASK = `
-//   M378.3,150.1c-14-31.2-30.3-61.2-48.7-89.7l-6-9.1c-7.3-11.2-16.9-20.7-28.1-27.5c-11.1-6.9-23.6-11.1-36.5-12.1l-10.5-0.9
-//   c-32.4-2.8-64.9-2.8-97.4,0l-10.5,0.9c-12.9,1-25.3,5.2-36.5,12.1S83.5,40.1,76.2,51.4l-6,9.2C51.7,89,35.5,119,21.5,150.2
-//   l-4.5,10.1c-5.6,12.4-8.4,25.9-8.4,39.7c0,13.7,2.8,27.3,8.4,39.7l4.5,10.1c14,31.2,30.3,61.2,48.7,89.7l6,9.2
-//   c7.3,11.3,17,20.7,28.1,27.6c11.2,6.9,23.7,11,36.5,12.1l10.5,0.9c32.4,2.8,64.9,2.8,97.4,0l10.5-0.9c12.9-1.1,25.3-5.2,36.5-12.1
-//   c11.2-6.9,20.8-16.4,28.1-27.6l6-9.2c18.5-28.5,34.7-58.5,48.7-89.7l4.5-10.1c5.5-12.4,8.4-25.9,8.4-39.7s-2.8-27.3-8.4-39.7
-//   L378.3,150.1z
-// `;
-
 
 
 
@@ -97,62 +84,6 @@ function Profile({user}) {
     setUserAge(age)
   }
 
-  // const canvasRef = useRef(null);
-  // const [imageUrl, setImageUrl] = useState();
-  // const [generatedImageData, setGeneratedImageData] = useState();
-
-  // function drawImage(
-  //   canvasRef,
-  //   imageUrl
-  // ) {
-  //   const mask = new Path2D(HEXAGON_MASK);
-
-  //   if (canvasRef.current) {
-  //     const ctx = canvasRef.current.getContext("2d");
-
-  //     if (ctx && imageUrl) {
-  //       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-  //       const image = new Image();
-  //       image.src = imageUrl;
-  //       // Fix https://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported
-  //        image.crossOrigin = "Anonymous";
-  //       image.onload = () => {
-  //         ctx.clip(mask);
-  //         ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, 400, 400);
-  //         // https://stackoverflow.com/questions/7717851/save-file-javascript-with-file-name
-  //         const imageUri = canvasRef.current
-  //           ?.toDataURL("image/png")
-  //           .replace("image/png", "image/octet-stream");
-  //         setGeneratedImageData(imageUri);
-  //       };
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   console.log(imageUrl)
-  //   if (imageUrl) {
-  //     drawImage(canvasRef, imageUrl);
-  //   }
-  // }, [canvasRef, imageUrl]);
-
-
-  // useEffect(() => {
-  //   const mask = new Path2D(HEXAGON_MASK);
-
-  //   if (canvasRef.current) {
-  //     const ctx = canvasRef.current.getContext("2d");
-
-  //     if (ctx) {
-  //       ctx.fillStyle = "white";
-  //       ctx.fill(mask);
-  //     }
-  //   }
-  // }, [canvasRef]);
-
-
-
- 
    
   return (
     <MKBox component="section" py={{ xs: 6, sm: 8 }}>
@@ -164,33 +95,6 @@ function Profile({user}) {
             <ButtonUploadBanner  photoURL={user?.bannerPhotoURL} />
 
 
-        
-            
-        {/* <Box p={10}>
-          <canvas ref={canvasRef} width={400} height={400} />
-        </Box> */}
-           
-            {/* <MKAvatar src={profilePicture} alt="userProfile" size="xxxl" shadow="xxxl"  /> */}
-
-            {/* <div class="hex">
-              <div class="hex-title">
-                Simple title
-              </div>
-              <div class="hex-hide"></div>
-              <div class="hex-img">
-                <img src={profilePicture}/>
-              </div>
-            </div> */}
-
-{/* <div class="hexagon hexagon1"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> */}
-{/* 
-<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div> */}
-
-{/* <div class="hexagon dodecagon"><div class="hexagon-in1"><div class="hexagon-in2"></div></div></div>
-            
-<div class="hex">
-       <div></div>
-</div> */}
 {/* 
         <div class="gallery">
           <img src="https://picsum.photos/id/1040/300/300" alt="a house on a mountain"/>
@@ -249,7 +153,7 @@ function Profile({user}) {
 
                       <p className="css-fix">{}</p>
 
-                      <MKTypography variant="body1" fontWeight="light" color="text"  >
+                      <MKTypography variant="body2" fontWeight="light" color="text"  >
                       
                         About me: <br/> <br/>
                         {user?.description}
