@@ -7,11 +7,14 @@ import AppInsideBar from '../../components/modules/views/AppInsideBar'
 import withRoot from '../../components/modules/withRoot'
 import { useAuth } from '../../Auth'
 import { useRouter } from 'next/router'
+import BeeTenderzForm from '../../components/modules/views/BeeTenderzForm'
+import RequestItem from '../../components/Request/RequestItem'
 
 
 const Detail = ({todoProps, id}) => {
     console.log( id)
     const todo =JSON.parse(todoProps)
+    console.log(todo)
     const router = useRouter()
 
     const [sent, setSent] = React.useState(false);
@@ -48,83 +51,99 @@ const Detail = ({todoProps, id}) => {
   return (
 
     <>
-     <AppInsideBar />
-        <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        style={{minHeight : '100vh'}}>
-            <Grid item xs={3}>
-                <Card sx={{minWidth:275, boxShadow:3, maxWidth:500}}
-                    style={{backgroundColor:'#fafafa'}}>
+        <BeeTenderzForm>
 
-                    <CardContent>
-                        <Typography variant='h5' component="div">
-                            {todo.title}
-                        </Typography>
-                        <Typography variant='h5' component="div">
-                            $ {todo.cost}
-                        </Typography>
-                        <Typography sx={{mb:1.5}} color="text.secondary">
-                            {todo.details}
-                        </Typography>
-                    </CardContent>
+            <RequestItem  id={todo.id} 
+                        title={todo.title}
+                        details={todo.details}
+                        timestamp={todo.timestamp}
+                        photoURL={todo.photoURL} 
+                        displayName={todo.displayName}
+                        email={todo.email}
+                        idUser={todo.idUser}
+                        cost={todo.cost}
+                        category1={todo.category1}
+                        category2={todo.category2}
+                        category3={todo.category3}/>
+            
+            {/* <Grid
+                container
+                spacing={0}
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+                style={{minHeight : '100vh'}}>
+                <Grid item xs={3}>
+                    <Card sx={{minWidth:275, boxShadow:3, maxWidth:500}}
+                        style={{backgroundColor:'#fafafa'}}>
 
-                       
-                    {!sent && (
-                          <CardActions>
-                          <Link href="/dashboard">
-                              <Button size="small">Back to home</Button>
-                          </Link>
-  
-                              <Button size="small" onClick={onHandle}>I want to do it</Button>
-                      
-  
-                      </CardActions>
-                )}
-                  
+                        <CardContent>
+                            <Typography variant='h5' component="div">
+                                {todo.title}
+                            </Typography>
+                            <Typography variant='h5' component="div">
+                                $ {todo.cost}
+                            </Typography>
+                            <Typography sx={{mb:1.5}} color="text.secondary">
+                                {todo.details}
+                            </Typography>
+                        </CardContent>
 
-
-                    {sent && (
-                        <>
-                          <TextField
-                        id="outlined-multiline-static"
-                        label="Write something to get to job"
-                        multiline
-                        rows={10}
-                        fullWidth
-                        value = {todo2.details}
-                        onChange={e=>setTodo({...todo2,details:e.target.value})}
-                    />
-                    <CardActions>
-                          <Link href="/dashboard">
-                              <Button size="small">Cancel</Button>
-                          </Link>
-  
-                              <Button size="small" onClick={onSend}>Send it</Button>
-                      
-  
-                      </CardActions>
-                        </>
-                      
-                )}
-
-                </Card>
-
-                {/* {isLoading ? (
-                        <View style={styles.spinner}>
-                            <ActivityIndicator size="large" color={SAVEBIKING.ORANGE} />
-                        </View>
-                    ) : ()} */}
                         
+                        {!sent && (
+                            <CardActions>
+                            <Link href="/dashboard">
+                                <Button size="small">Back to home</Button>
+                            </Link>
+    
+                                <Button size="small" onClick={onHandle}>I want to do it</Button>
+                        
+    
+                        </CardActions>
+                    )}
+                    
 
-             
 
-            </Grid>
+                        {sent && (
+                            <>
+                            <TextField
+                            id="outlined-multiline-static"
+                            label="Write something to get to job"
+                            multiline
+                            rows={10}
+                            fullWidth
+                            value = {todo2.details}
+                            onChange={e=>setTodo({...todo2,details:e.target.value})}
+                        />
+                        <CardActions>
+                            <Link href="/dashboard">
+                                <Button size="small">Cancel</Button>
+                            </Link>
+    
+                                <Button size="small" onClick={onSend}>Send it</Button>
+                        
+    
+                        </CardActions>
+                            </>
+                        
+                    )}
 
-        </Grid>
+                    </Card>
+
+                    {isLoading ? (
+                            <View style={styles.spinner}>
+                                <ActivityIndicator size="large" color={SAVEBIKING.ORANGE} />
+                            </View>
+                        ) : ()}
+                            
+
+                
+
+                </Grid>
+
+            </Grid> */}
+        </BeeTenderzForm>
+        
     </>
     
   )
