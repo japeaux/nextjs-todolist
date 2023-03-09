@@ -8,6 +8,8 @@ import { Alert, Snackbar } from '@mui/material';
 import TodoForm from '../components/TodoForm';
 import { TodoContext } from '../TodoContext'
 import { useState } from 'react'
+import BeeTenderzForm from '../components/modules/views/BeeTenderzForm';
+import CreateForm from '../components/CreateRequest/CreateForm';
 
 
 const Request = () => {
@@ -44,50 +46,27 @@ const Request = () => {
     setOpen(false);
   };
 
-
-  const currencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];
-  
-
-
-
-
   return (
     <TodoContext.Provider value={{showAlert, todo, setTodo}}>
-    <React.Fragment>
+    
       <AppInsideBar />
       
       
-      <AppForm>
+      <BeeTenderzForm>
         
-        <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography variant="h3" gutterBottom marked="center" align="center" color="primary">
             Create a new request
           </Typography>
-          <Typography variant="body2" align="center">
-   
+          <Typography variant="body2" align="center" color="primary">
+            When creating a request BeeTenderz will lock the cost of the request for security and once the model send the file it will deducted from the account, if you cancel the request create BeeTenderz will refund your tokens. 
           </Typography>
-        </React.Fragment>
         
-        <TodoForm/>
+        <CreateForm/>
 
-      </AppForm>
+
+        {/* <TodoForm/> */}
+
+      </BeeTenderzForm>
         
       
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{vertical:'bottom', horizontal:'center'}}>
@@ -98,7 +77,6 @@ const Request = () => {
 
 
      
-    </React.Fragment>
     </TodoContext.Provider>
   );
 }

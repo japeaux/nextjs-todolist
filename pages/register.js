@@ -73,41 +73,62 @@ function Register() {
     return errors;
   };
 
+  function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age
+  }
+
+
+
   const handleSubmit = async (values) => {
     // e.preventDefault()
     // const data = new FormData(e.currentTarget);
-    try {
-       await signup(values.email, values.password, values.birthday, values.displayName).then((userCredential) => {
-        // Signed in 
-        console.log("userCredential", userCredential)
-        const usersRef = collection(db,"users");
-        const userData = {
-          displayName:values.displayName,
-          email:values.email,
-          lastSeen:serverTimestamp(),
-          photoURL:null,
-          description:null,
-          birthday:values.birthday,
-          emailVerificado:false,
-          typeOfUser:value,
-          contaVerificada:false,
-      }
+    console.log(values.birthday)
+     const auxAge =  getAge(values.birthday)
+     console.log(auxAge)
+     if(auxAge>=18){
+        try {
+          await signup(values.email, values.password, values.birthday, values.displayName).then((userCredential) => {
+            // Signed in 
+            console.log("userCredential", userCredential)
+            const usersRef = collection(db,"users");
+            const userData = {
+              displayName:values.displayName,
+              email:values.email,
+              lastSeen:serverTimestamp(),
+              photoURL:null,
+              description:null,
+              birthday:values.birthday,
+              emailVerificado:false,
+              typeOfUser:value,
+              contaVerificada:false,
+          }
+
+          addDoc(usersRef,userData)
+          //  setUserFrom(userData)
+          sendEmailForVerification()
+          //sendEmailToVerify(userData)
+          // getUserInfos()
+            // ...
+          })
+            showAlert('success',`We have send you an email for verification`)
+            //router.push('/')
+        } catch (err) {
+          console.log("err", err)
+          if(err.code == "auth/email-already-in-use"){
+            showAlert('error',`Email already in use`)
+          }
+        }
+     }else{
+        showAlert('error',`You must be 18 or older to have an account in this website`)
+     }
     
-      addDoc(usersRef,userData)
-      //  setUserFrom(userData)
-      sendEmailForVerification()
-       //sendEmailToVerify(userData)
-      // getUserInfos()
-        // ...
-      })
-        showAlert('success',`We have send you an email for verification`)
-        router.push('/login')
-    } catch (err) {
-      console.log("err", err)
-      if(err.code == "auth/email-already-in-use"){
-        showAlert('error',`Email already in use`)
-    }
-    }
 
   }
 

@@ -48,54 +48,53 @@ const OpenContract = async (e) =>{
       <AppBar position="fixed" sx={{backgroundColor:"#111111"}}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
-          <Link
-            variant="h6"
-            underline="none"
-            color="#E9AB17"
-            href="/dashboard"
-            sx={{ fontSize: 24 }}
-          >
-            {'BeeTenderz'}
-          </Link>
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            {/* <Link
-              color="inherit"
+          {currentUser?.contaVerificada ?  (<>
+            <Link
               variant="h6"
               underline="none"
-              href="/profile"
-              sx={rightLink}
+              color="#E9AB17"
+              href="/dashboard"
+              sx={{ fontSize: 24 }}
             >
-              {'profile'}
-            </Link> */}
-
+              {'BeeTenderz'}
+            </Link>
+          </>):(<>
+            <Link
+              variant="h6"
+              underline="none"
+              color="#E9AB17"
+              href="/model/verifyAcc"
+              sx={{ fontSize: 24 }}
+            >
+              {'BeeTenderz'}
+            </Link>
+          </>)}
            
-            <IconButton  onClick={e=>OpenContract(e)}>
-              <RequestPageIcon  color="info"/>
-            </IconButton>
-
-            <IconButton  onClick={e=>OpenChat(e)}>
-              <ChatIcon  color="info"/>
-            </IconButton>
-            <IconButton  onClick={e=>OpenHome(e)}>
-                <HomeIcon  color="info"/>
-            </IconButton>
-
-           
-              {/* <Avatar src={currentUser.photoURL}/> */}
-              <CustomVerticalMore/>
+            <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
          
+            {currentUser?.contaVerificada ?  (<>
+                <IconButton  onClick={e=>OpenContract(e)}>
+                  <RequestPageIcon  color="info"/>
+                </IconButton>
 
+                <IconButton  onClick={e=>OpenChat(e)}>
+                  <ChatIcon  color="info"/>
+                </IconButton>
+                <IconButton  onClick={e=>OpenHome(e)}>
+                    <HomeIcon  color="info"/>
+                </IconButton>
 
-
-            {/* <Link
-              variant="h6"
-              underline="none"
-              href="/signup"
-              sx={{ ...rightLink, color: 'secondary.main' }}
-            >
-              {'Sign Up'}
-            </Link> */}
-          </Box>
+                <CustomVerticalMore/>
+          
+              </>):(<>
+                
+              </>)}
+              
+           
+             
+         
+            </Box>
+            
         </Toolbar>
       </AppBar>
      

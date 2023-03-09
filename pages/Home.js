@@ -18,8 +18,14 @@ function Index() {
 
   useEffect(()=>{
       console.log("user",currentUser)
-      if(currentUser){
-        router.push('/dashboard')
+      if(currentUser?.emailVerified){
+        if(currentUser.contaVerificada){
+          router.push('/dashboard')
+        }else{
+          router.push('/model/verifyAcc')
+        }
+      }else{
+        console.log("Check your email to verify your account")
       }
   },[])
 

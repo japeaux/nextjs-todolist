@@ -43,10 +43,6 @@ function Home({todosProps}) {
 
   const router = useRouter();
 
-  const OpenChat = async (e) =>{
-      e.stopPropagation();
-      router.push(`/Chat`)
-  }
 
 
   return (

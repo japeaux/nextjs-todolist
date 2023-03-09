@@ -30,24 +30,13 @@ const TodoForm = () => {
 
     const onSubmit = async () =>{
       console.log(todo, currentUser)
-      // if(todo?.hasOwnProperty('timestamp')){
-      //     //update
-      //   const docRef  = doc(db,"todo",todo.id)
-      //   const todoUpdated = {...todo, timestamp:serverTimestamp()}
-      //   updateDoc(docRef,todoUpdated)
-      //   setTodo({title:'', details:''})
-      //   showAlert('info',`Todo with id ${todo.id} updated successfully`)
 
-      // }else{
         const collectionRef = collection(db,"todo")
         const docRef = await addDoc(collectionRef, {...todo, email:currentUser.email ,timestamp: serverTimestamp(), displayName:currentUser.displayName, photoURL:currentUser.photoURL, idUser:currentUser.id })
 
         setTodo({title:'', details:''})
         showAlert('success',`New request has been added successfully`)
         router.push('/dashboard')
-      //}
-
-      
     }
 
     const validate = (values) => {

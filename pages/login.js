@@ -51,11 +51,15 @@ export default function SignInSide() {
         await login( data.get('email'), data.get('password'))
         .then((userCredential) => {
           // Login 
-          console.log(userCredential,"userCredential")
-          console.log("is verifi", userCredential.user.emailVerified)
+          console.log(userCredential,"userCredential", currentUser)
+          // console.log("is verifi", userCredential.user.emailVerified)
 
           if(userCredential.user.emailVerified){
-            router.push('/dashboard')
+            if(currentUser?.contaVerificada){
+              router.push('/dashboard')
+            }else{
+              router.push('/model/verifyAcc')
+            }
           }else{
             showAlert('error',`Verify your email to confirm your account`)
           }
@@ -102,9 +106,15 @@ export default function SignInSide() {
 
 
   React.useEffect(()=>{
-    console.log("currentUser?.email", currentUser?.email,currentUser)
-    if(currentUser?.email){
-      router.push('/dashboard')
+    console.log("currentUser?.email", currentUser?.email,currentUser?.contaVerificada)
+    if(currentUser?.emailVerified){
+      if(currentUser.contaVerificada){
+        router.push('/dashboard')
+      }else{
+        router.push('/model/verifyAcc')
+      }
+    }else{
+      console.log("Check your email to verify your account")
     }
   },[])
   
