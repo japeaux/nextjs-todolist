@@ -5,7 +5,6 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import moment from 'moment/moment';
 import { Box } from '@mui/system';
 import { useRouter } from 'next/router';
@@ -14,7 +13,7 @@ import { collection, getDocs,  orderBy, query, where  } from 'firebase/firestore
 import { db } from '../../firebase';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Button, CardActions, Link } from '@mui/material';
+import { Button, CardActions, Link, TextField } from '@mui/material';
 
 
 export default function RequestItem({id, timestamp, title, details, displayName, email, idUser, cost, category1, category2, category3}) {
