@@ -166,7 +166,7 @@ function VerifyAcc() {
                     </MKTypography>
                     <Image src="/docs/doc.svg" height={250} width={400}/>
                     <MKTypography variant="body2" color="white" opacity={0.8} mb={3}>
-                      Second one is a photo of yourself holding  your id card and a sign writen by hand 'BeeTenderz' and the date.
+                      Second one is a photo of yourself holding  your id card and a sign writen by hand ´BeeTenderz´ and the date.
                     </MKTypography>
                     <Image src="/docs/selfieDoc.svg" height={550} width={400}/>
                   
