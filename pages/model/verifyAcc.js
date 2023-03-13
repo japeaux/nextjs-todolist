@@ -6,7 +6,7 @@ import {useRouter} from 'next/router'
 
 import withRoot from '../../components/modules/withRoot';
 import BeeTenderzForm from '../../components/modules/views/BeeTenderzForm';
-import { Grid } from '@mui/material';
+import { FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material';
 import MKBox from '../../components/MKBox';
 import MKTypography from '../../components/MKTypography';
 import MKInput from '../../components/MKInput';
@@ -36,6 +36,15 @@ function VerifyAcc() {
   const router = useRouter();
 
   const [input, setInput] = useState('')
+  
+
+  const [value, setValue] = useState('Girl');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+
 
 
 
@@ -70,8 +79,8 @@ function VerifyAcc() {
 
                             <MKInput
                                 variant="standard"
-                                label="Country"
-                                placeholder=""
+                                label="Real name"
+                                placeholder="Like in the id card"
                                 InputLabelProps={{ shrink: true }}
                                 fullWidth
                                 value = {input}
@@ -84,32 +93,27 @@ function VerifyAcc() {
 
                       </Grid>
                       <Grid item xs={12} pr={1} mb={6}>
-                        <MKInput
-                          variant="standard"
-                          label="Genre"
-                          placeholder=""
-                          InputLabelProps={{ shrink: true }}
-                          fullWidth
-                          type="number"
-                          value={todo.cost}
-                          onChange={e=>setTodo({...todo,cost:e.target.value})}
+                       
+                      <FormControl> 
+                          <MKTypography variant="body2" color="text" mb={2}>
+                              Which of the following describes you better?
+                          </MKTypography>
+                          <RadioGroup
+                            aria-labelledby="demo-controlled-radio-buttons-group"
+                            name="controlled-radio-buttons-group"
+                            value={value}
+                            onChange={handleChange}
+                            color="secondary"
+                          >
+                            <FormControlLabel value="Girl" control={<Radio />} label={<Typography component="body1" variant="h5"  sx={{ fontSize: 14 }}  >Girl</Typography>}/>
+                            <FormControlLabel value="Boy" control={<Radio />} label={<Typography component="body1" variant="h5"  sx={{ fontSize: 14 }} >Boy</Typography>}/>
+                            <FormControlLabel value="Trans" control={<Radio />} label={<Typography component="body1" variant="h5"  sx={{ fontSize: 14 }}  >Trans</Typography>}/>
+                          </RadioGroup>
+                        </FormControl>
 
-                        />
                       </Grid>
                       <Grid item xs={12} pr={1} mb={6}>
-                        <MKInput
-                          variant="standard"
-                          label="Real Name"
-                          placeholder="Like in the id card"
-                          InputLabelProps={{ shrink: true }}
-                          fullWidth
-                          multiline
-                          rows={6}
-
-                          value = {todo.details}
-                          onChange={e=>setTodo({...todo,details:e.target.value})}
-
-                        />
+                                
                       </Grid>
                     </Grid>
                     <Grid
@@ -122,7 +126,7 @@ function VerifyAcc() {
                       ml="auto"
                     >
                       <MKButton color="info">
-                        Create Request
+                        Save
                       </MKButton>
                     </Grid>
                   </MKBox>
@@ -166,7 +170,7 @@ function VerifyAcc() {
                     </MKTypography>
                     <Image src="/docs/doc.svg" height={250} width={400}/>
                     <MKTypography variant="body2" color="white" opacity={0.8} mb={3}>
-                      Second one is a photo of yourself holding  your id card and a sign writen by hand ´BeeTenderz´ and the date.
+                      Second one is a photo of yourself holding  your id card and a sign writen by hand *BeeTenderz* and the date.
                     </MKTypography>
                     <Image src="/docs/selfieDoc.svg" height={550} width={400}/>
                   
