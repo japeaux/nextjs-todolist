@@ -6,12 +6,14 @@ import {useRouter} from 'next/router'
 
 import withRoot from '../../components/modules/withRoot';
 import BeeTenderzForm from '../../components/modules/views/BeeTenderzForm';
-import { FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Typography } from '@mui/material';
+import { Alert, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, Snackbar, Typography } from '@mui/material';
 import MKBox from '../../components/MKBox';
 import MKTypography from '../../components/MKTypography';
 import MKInput from '../../components/MKInput';
 import MKButton from '../../components/MKButton';
 import Image from 'next/image';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 
 function VerifyAcc() {
@@ -24,14 +26,25 @@ function VerifyAcc() {
   const [open,setOpen] = useState(false)
   const [alertType, setAlertType] = useState("success")
   const [alertMessage, setAlertMessage] = useState("")
-  const [todo, setTodo] = useState({title:'',details:''})
 
+  const [user, setUser] = useState(currentUser)
 
   const showAlert = (type,msg) => {
     setAlertType(type)
     setAlertMessage(msg)
     setOpen(true)
   }
+
+
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
 
   const router = useRouter();
 
@@ -46,13 +59,43 @@ function VerifyAcc() {
 
 
 
+  const onSubmit = async () =>{
+    console.log(input.length)
+    if(input.length<1){
+      showAlert('error',`We need an valid Real name`)
+      console.log(input.length)
+    }else{
+      setUser({...user, genre:value, RealName:input})
+        // const collectionRef = collection(db,"user")
+        // const docRef = await addDoc(collectionRef, {...todo, email:currentUser.email ,timestamp: serverTimestamp(), displayName:currentUser.displayName, photoURL:currentUser.photoURL, idUser:currentUser.id, status:'live', type:'normal' })
 
+        const docRef  = doc(db,"users",currentUser.id)
+        const userUpdated = {...user, genre:value, RealName:input}
+        updateDoc(docRef,userUpdated)
+  
+        setInput('')
+
+        showAlert('success',`Thank you for the application, we will verify your account in less then 48h`)
+      
+      
+     
+    }
+
+    
+  }
 
 
   return (
     <>
        <BeeTenderzForm>
-       <MKBox
+              
+              <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{vertical:'top', horizontal:'center'}}>
+                <Alert onClose={handleClose} severity={alertType} sx={{ width: '100%' }}>
+                  {alertMessage}
+                </Alert>
+              </Snackbar>
+
+          <MKBox
             width="100%"
             bgColor="white"
             borderRadius="xl"
@@ -60,6 +103,7 @@ function VerifyAcc() {
             mb={6}
             sx={{ overflow: "hidden" }}
           >
+
             <Grid container spacing={2}>
             
               <Grid item xs={12} lg={7}>
@@ -85,8 +129,7 @@ function VerifyAcc() {
                                 fullWidth
                                 value = {input}
                                 onChange={( e ) => {
-                                  setInput(e.target.value)  
-                                  findChange(e.target.value)
+                                  setInput(e.target.value)
                               }}
                             />
 
@@ -113,7 +156,7 @@ function VerifyAcc() {
 
                       </Grid>
                       <Grid item xs={12} pr={1} mb={6}>
-                                
+
                       </Grid>
                     </Grid>
                     <Grid
@@ -125,7 +168,7 @@ function VerifyAcc() {
                       textAlign="right"
                       ml="auto"
                     >
-                      <MKButton color="info">
+                      <MKButton color="info" onClick={onSubmit}>
                         Save
                       </MKButton>
                     </Grid>
