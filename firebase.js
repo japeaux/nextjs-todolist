@@ -6,14 +6,16 @@ import {getFirestore} from 'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB6E7uOBfVaK7UvzaRIPuDqoEzafEQMlFM",
-  authDomain: "nextjstodo-93a52.firebaseapp.com",
-  projectId: "nextjstodo-93a52",
-  storageBucket: "nextjstodo-93a52.appspot.com",
-  messagingSenderId: "925781609403",
-  appId: "1:925781609403:web:284ce272e444de679c529e"
-};
+import { firebaseConfig } from "./firebaseConfig";
+
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_APIKEY,
+//   authDomain: process.env.REACT_APP_AUTHDOMAIN,
+//   projectId: process.env.REACT_APP_PROJECTID,
+//   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+//   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+//   appId: process.env.REACT_APP_APPID,
+// };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -22,4 +24,4 @@ const db = getFirestore();
 const auth = getAuth();
 const provider = new GoogleAuthProvider()
 const storage = getStorage(app);
-export {db, auth, provider, storage}
+export  {db, auth, provider, storage}
